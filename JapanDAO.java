@@ -98,5 +98,42 @@ public class JapanDAO {
 
 	// ---------------------//
 	
+	void coin(JapanDTO[]dtoArr, JapanDTO dto) {
+		
+		int[] coin= {10,50,100,500,1000};
+		int count1=0,count2=0,count3=0,count4=0,count5=0;
+		
+		while(true) {
+			if(dto.money>=1000) {
+				dto.money=dto.money-coin[4];
+				count1=count1+1;
+			}
+			else if(dto.money>=500) {
+				dto.money=dto.money-coin[3];
+				count2=count2+1;
+			}
+			else if(dto.money>=100) {
+				dto.money=dto.money-coin[2];
+				count3=count3+1;
+			}
+			else if(dto.money>=50) {
+				dto.money=dto.money-coin[1];
+				count4=count4+1;
+			}
+			else if(dto.money>=10) {
+				dto.money=dto.money-coin[0];
+				count5=count5+1;
+			}
+			else if(dto.money==0) {
+				break;
+			}
+		}
+		System.out.println("1000원을 "+count1+"장 반환합니다");
+		System.out.println("500원을 "+count2+"개 반환합니다");
+		System.out.println("100원을 "+count3+"개 반환합니다");
+		System.out.println("50원을 "+count4+"개 반환합니다");
+		System.out.println("10원을 "+count5+"개 반환합니다");
+	}
+	
 
 }

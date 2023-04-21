@@ -40,8 +40,7 @@ public class JapanMain {
 				}
 				
 				else if(selectNum==3) {
-					System.out.println("잔돈을 반환합니다");
-					System.out.println("잔돈: "+dto.money);
+					dao.coin(dtoArr, dto);
 					break;
 				}
 				else {
