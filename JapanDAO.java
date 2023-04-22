@@ -52,7 +52,7 @@ public class JapanDAO {
 		boolean isExit = false;
 
 		while (dto.money < dtoArr[selectDrink - 1].price) {
-			System.out.println("잔액이 부족합니다");
+			System.out.println("잔액("+ (dtoArr[selectDrink-1].price-dto.money)+"원)"+"이 부족합니다");
 			System.out.println("돈 넣겠습니까?");
 			System.out.println("1.O 2.X");
 			int select = Integer.parseInt(sc.nextLine());
@@ -177,35 +177,28 @@ public class JapanDAO {
 		boolean isEixt=true;
 		
 		
-		if(!dtoArr[0].name.equals("X")&&!dtoArr[1].name.equals("X")&&!dtoArr[2].name.equals("X")) {
-			System.out.println("자판기에 공간이 없습니다");
+		if(dtoArr[0].name.equals("X")&&dtoArr[1].name.equals("X")&&dtoArr[2].name.equals("X")) {
+			System.out.println("채울 음료가 없습니다");
 			isEixt=false;
 		}
 		
 		if(isEixt) {
 			
-			System.out.println("몇번 번호에 추가 하시겠습니까?");
+			System.out.println("몇번 음료를 채우시겠습니까?");
+			System.out.println("1."+dtoArr[0].name+"2."+dtoArr[1].name+"3."+dtoArr[2].name);
 			int addSelect= Integer.parseInt(sc.nextLine());
-			if(dtoArr[addSelect-1].name.equals("X")) {
-				System.out.println("무슨 음료를 넣겠습니까?");
-				String addDrink=sc.nextLine();
-				System.out.println("가격은 얼마로 하시겠습니까?");
-				int addPrice=Integer.parseInt(sc.nextLine());
-				System.out.println("갯수는 몇개로 하시겠습니까?");
+			
+				
+				System.out.println("몇개 채우시겠습니까??");
 				int addCount=Integer.parseInt(sc.nextLine());
 				
-				dtoArr[addSelect-1].name=addDrink;
-				dtoArr[addSelect-1].price=addPrice;
-				dtoArr[addSelect-1].count=addCount;
+				dtoArr[addSelect-1].count=dtoArr[addSelect-1].count+addCount;
 				
 				for(int i=0;i<dtoArr.length;i++) {
 					System.out.println(i+1+". "+dtoArr[i].name+" "+dtoArr[i].price+"원 "+dtoArr[i].count+"개 남음");
 				}
 				
-			}
-			else {
-				System.out.println("음료가 들어갈 자리가 없습니다");
-			}
+			
 		}
 		
 		
@@ -226,7 +219,8 @@ public class JapanDAO {
 		
 		if(isEixt) {
 			
-			System.out.println("삭제할 목록 번호를 선택하세요");
+			System.out.println("삭제할 음료의 번호를 선택하세요");
+			System.out.println("1."+dtoArr[0].name+"2."+dtoArr[1].name+"3."+dtoArr[2].name);
 			
 			int delete=Integer.parseInt(sc.nextLine());
 			while(delete<1||delete>3){
@@ -254,6 +248,7 @@ public class JapanDAO {
 			
 			
 			System.out.println("몇번 번호에 수정 하시겠습니까?");
+			System.out.println("1."+dtoArr[0].name+"2."+dtoArr[1].name+"3."+dtoArr[2].name);
 			
 			int addSelect2 = Integer.parseInt(sc.nextLine());
 			
