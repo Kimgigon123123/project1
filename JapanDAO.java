@@ -139,7 +139,14 @@ public class JapanDAO {
 		while (true) {
 
 			System.out.println("1. 로그인하기 2. 종료");
-			int logSelect = Integer.parseInt(sc.nextLine());
+			
+			int logSelect=0;
+			try {
+				logSelect = Integer.parseInt(sc.nextLine());
+			}
+			 catch (Exception e) {
+				
+			}
 
 			if (logSelect == 1) {
 				System.out.println("아이디를 입력하시오");
@@ -157,6 +164,9 @@ public class JapanDAO {
 			} else if (logSelect == 2) {
 				System.out.println("관리자 모드 종료");
 				break;
+			}
+			else {
+				System.out.println("1~2를 입력해주세요");
 			}
 
 		}
@@ -186,8 +196,30 @@ public class JapanDAO {
 			
 			System.out.println("몇번 음료를 채우시겠습니까?");
 			System.out.println("1."+dtoArr[0].name+"2."+dtoArr[1].name+"3."+dtoArr[2].name);
+			
+		
+	
 			int addSelect= Integer.parseInt(sc.nextLine());
 			
+			while(dtoArr[addSelect-1].name.equals("X")) {
+				System.out.println("빈 슬롯입니다. 다시 선택해주세요");
+				
+				for(int i=0;i<dtoArr.length;i++) {
+					System.out.println(i+1+". "+dtoArr[i].name+" "+dtoArr[i].price+"원 "+dtoArr[i].count+"개 남음");
+				}
+				
+				addSelect= Integer.parseInt(sc.nextLine());
+			}
+			
+			while(addSelect<0||addSelect>3) {
+				System.out.println("1~3을 입력해주세요");
+				try {
+					addSelect= Integer.parseInt(sc.nextLine());
+				}
+				catch (Exception e) {
+					
+				}
+			}
 				
 				System.out.println("몇개 채우시겠습니까??");
 				int addCount=Integer.parseInt(sc.nextLine());
@@ -247,7 +279,7 @@ public class JapanDAO {
 			Scanner sc=new Scanner(System.in);
 			
 			
-			System.out.println("몇번 번호에 수정 하시겠습니까?");
+			System.out.println("몇번 음료를 수정하시겠습니까?");
 			System.out.println("1."+dtoArr[0].name+"2."+dtoArr[1].name+"3."+dtoArr[2].name);
 			
 			int addSelect2 = Integer.parseInt(sc.nextLine());
@@ -261,6 +293,10 @@ public class JapanDAO {
 			String addDrink2 = sc.nextLine();
 			System.out.println("가격은 얼마로 하시겠습니까?");
 			int addPrice2 = Integer.parseInt(sc.nextLine());
+			while(addPrice2<0||addPrice2%10!=0) {
+				System.out.println("가격을 다시 설정해주세요");
+				addPrice2=Integer.parseInt(sc.nextLine());
+			}
 			System.out.println("갯수는 몇개로 하시겠습니까?");
 			int addCount2 = Integer.parseInt(sc.nextLine());
 

@@ -16,10 +16,18 @@ public class JapanMain {
 		
 
 		while (true) {
-
-			System.out.println("1. 관리자모드 2. 사용자모드 3.종료");
-			int modeSelect = Integer.parseInt(sc.nextLine());
-
+			
+			int modeSelect = 0;
+			
+			try {
+				
+				System.out.println("1. 관리자모드 2. 사용자모드 3.종료");
+				modeSelect = Integer.parseInt(sc.nextLine());
+			}
+			catch (Exception e) {
+				
+			}
+			
 			if (modeSelect == 1) {
 				
 				dao.login(dto);
@@ -35,7 +43,16 @@ public class JapanMain {
 						System.out.println("4.음료수정하기");
 						System.out.println("5.종료");
 						
-						int adminSelect = Integer.parseInt(sc.nextLine());
+						int adminSelect=0;
+						
+						try {
+							adminSelect = Integer.parseInt(sc.nextLine());
+						}
+						catch (Exception e) {
+							System.out.println("1~5를 입력해주세요");
+						}
+						
+						
 						if (adminSelect == 1) {
 							for (int i = 0; i < dtoArr.length; i++) {
 								System.out
